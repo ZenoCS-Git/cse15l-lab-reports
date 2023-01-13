@@ -57,3 +57,7 @@ Anyways, here is a refresher on some commands you can try!
 * cd <path> - go to somewhere using relative or ~/ absolute paths
   
  You probably should refer to notes for more commands.
+ 
+ ![image](https://user-images.githubusercontent.com/45048652/212210168-372982ad-d0ba-483b-af62-7a1126a4418d.png)
+
+ Example of pwd. Also use exit or ctrl + D to logout and end session.
