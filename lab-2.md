@@ -1,4 +1,4 @@
-# Lab 2-3, The Server and others
+# Lab Report 2, The Server and others from Lab 2 and 3
 Okay, it's sorta bad. 
 
 This blog describes instruction for basic usage of the Server and URL Handler class in java
@@ -60,17 +60,15 @@ string that is passed to the code is "the following second message" or "the%20fo
 
 ## Part 2 - One Bug from Lab 3
 
-As requested, you are to describe one bug from Lab 3, an exercise to check and find symptoms and bugs. 
+As requested, you are to describe one bug from Lab 3, an exercise to check and find symptoms and bugs. The bug here is if the method properly 
+reverses the order of elements in an array.
 
-The Junit Test
+The Junit Test with Failure-Inducing Input where the data array elements does not equal the reversed order of the array.
 
 ```java
 @Test 
-public void testReverseInPlace() {
-    int[] input1 = { 3 };
-    ArrayExamples.reverseInPlace(input1);
-    assertArrayEquals(new int[]{ 3 }, input1);
-
+public void testReverseInPlace2() {
+    //yes error
     int[] input2 = { 3, 2, 5 };
     ArrayExamples.reverseInPlace(input2);
     assertArrayEquals(new int[]{ 5, 2, 3 }, input2);
@@ -78,12 +76,25 @@ public void testReverseInPlace() {
 
 ```
 
-Junit Running and the Symptom 
+The Junit Test without Failure-Inducing Input where it does not fail since the reverse order of a 1 element array is the same as the original array.
 
-![image](https://user-images.githubusercontent.com/45048652/215363386-d41f5cac-6830-43eb-aa6d-31544a7ebb2b.png)
+```java
+@Test 
+public void testReverseInPlace1() {
+    //no error
+    int[] input1 = { 3 };
+    ArrayExamples.reverseInPlace(input1);
+    assertArrayEquals(new int[]{ 3 }, input1);
+}
+
+```
+
+Junit Running and the Symptom that shows an array where the elements do not match indexes. 
+
+![image](https://user-images.githubusercontent.com/45048652/215364671-b4c08ae1-1224-4b39-a178-960e258cbe23.png)
 
 
-The Before Code (has error)
+The Before Code (has error located at the for loop and lack of temp variable that help move the elements in the array)
 
 ```java
   // Changes the input array to be in reversed order
@@ -104,7 +115,7 @@ The Before Code (has error)
   }
 ```
 
-The After Code (fixed)
+The After Code (fixed by adding a /2 in the for loop and a temp variable to help swap element locations)
 
 ```java
   // Changes the input array to be in reversed order
@@ -127,30 +138,12 @@ The After Code (fixed)
   }
 
 ```
-A failure-inducing input for the buggy program, as a JUnit test and any associated code (write it as a code block in Markdown)
-
-An input that doesn’t induce a failure, as a JUnit test and any associated code (write it as a code block in Markdown)
-The symptom, as the output of running the tests (provide it as a screenshot of running JUnit with at least the two inputs above)
-The bug, as the before-and-after code change required to fix it (as two code blocks in Markdown)
  
-# Step 3 - Trying Some Commands (omg this is where pwd works)
+# Part 3
 
-Now you're in the terminal, connected to the other computer, you can now do the stuff the professor been describing :D
+I simply was unaware the way in which java can handle hosting a server. The introduction to the server and handler class in lab 2 taught me a great 
+deal in which websites work. Specifically, I would like to point out the way the code uses methods that draw and takes in the 
+information in the url. It is quite clever in design by which it takes the information and copy it into a string parameter before performing 
+operations based on the info. In addition, the way it checks the url also demonstrates how a website can redirect you to a different url if 
+you type a certain url.
 
-That is assuming you were paying attention...
-
-Anyways, here is a refresher on some commands you can try!
-
-![image](https://user-images.githubusercontent.com/45048652/214347778-8003fa48-2703-4525-9a89-cb1baa922cc1.png)
-
-
-* ls - list the files and folders in the current working directory 
-* pwd - check where is the current directory currently located at 
-* .. - go backword in the directory to the previous folder and can be combined with cd ..<path> for more complicated movement
-* cd <path> - go to specified directory using relative or ~/ absolute paths. note that root directories are treated differently
-  
-Refer to online notes for more commands.
- 
- ![image](https://user-images.githubusercontent.com/45048652/212210168-372982ad-d0ba-483b-af62-7a1126a4418d.png)
-
- Example of pwd. Also use exit or ctrl + D to logout and end session.
