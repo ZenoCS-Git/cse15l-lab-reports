@@ -7,10 +7,35 @@ For this lab report, you were required to make a webpage that can add and displa
 Of course, tho, you were surely uneducated and unfamilar with the code so you took a bit to understand 
 and add comments to understand every part of the code. 
 
-Below is an image of the StringsServer code and comments for many lines explaining the purpose of each. There are also 
+Below is the code of the StringsServer and comments for many lines explaining the purpose of each. There are also 
 some imports required for the code to functiona as well as the provided message that handles the server startup. 
 
-![image](https://user-images.githubusercontent.com/45048652/215360588-90c758b4-3375-412f-8d37-630bde23ee70.png)
+```java
+//static variables for the server to keep track 
+    String messages = ""; //one long string that track all the messages added using the url with /n between each entry 
+
+    public String handleRequest(URI url) {
+
+        //handles if url path has add-message?s=<some string> that adds strings to messages 
+
+        // url.getPath() grabs the data in the url, specifyly the path exluding domain
+        // note, the path is everything from / to ?, excluding the end
+        if (url.getPath().equals("/add-message")) { //checks url for /add-message
+            //creates an array that stores the info into two elements, the stuff before the = and after
+            String[] parameters = url.getQuery().split("="); 
+
+            //adds the string parameter to messages
+            if (parameters[0].equals("s")) { //checks if before = is a s
+                messages += parameters[1]; //adds the second element data to messages
+                messages += "\n"; //adds spacing
+                return messages;
+            }
+            return messages;
+        }
+            //default return messages
+            return messages;
+    }
+```
 
 Here is an example of the webpage after one run of the URL. 
 
@@ -33,37 +58,80 @@ entry to the string messages of the code. The code does the same as the first, c
 down the information into a String array to be then added to the messages string that is returned to be displayed. Here, the 
 string that is passed to the code is "the following second message" or "the%20following%20second%20message" in the URL.
 
-## Part 2 - Remotely Connecting (You'll hate this or not)
+## Part 2 - One Bug from Lab 3
 
-Look. You know that thing that professor said to find your course-specific account and stuff?
+As requested, you are to describe one bug from Lab 3, an exercise to check and find symptoms and bugs. 
 
-You ***have*** to reset your password for this part to work. I know, it's wack, but do it. Also 
-write down the password or something since your password manager probably doesn't work with V-Studio. 
+The Junit Test
 
-Anyways, the lab report instructions didn't say to explain Git so I'm assuming you got downloaded. 
-If not, Git is some sort of program that adds a git bash terminal to V-Studio. Good luck googling 
-or asking your professor, but moving on.
+```java
+@Test 
+public void testReverseInPlace() {
+    int[] input1 = { 3 };
+    ArrayExamples.reverseInPlace(input1);
+    assertArrayEquals(new int[]{ 3 }, input1);
 
-![new terminal button](vsnewterm.jpg)
+    int[] input2 = { 3, 2, 5 };
+    ArrayExamples.reverseInPlace(input2);
+    assertArrayEquals(new int[]{ 5, 2, 3 }, input2);
+}
 
-You wanna open a new terminal located somewhere on top of the screen. Click Terminal and it should 
-open a drop dox for the contents. From there, hit these keys to open up a magical menu to set something 
-to Git Bash.
+```
 
-    Ctrl + Shift + P
+Junit Running and the Symptom 
 
-Search "Select Default Profile" and choose Git Bash then wait like a minute for it to load.
+![image](https://user-images.githubusercontent.com/45048652/215363386-d41f5cac-6830-43eb-aa6d-31544a7ebb2b.png)
 
-![image](https://user-images.githubusercontent.com/45048652/212208295-c6cca98d-f06d-4559-bed6-d7c04e5b0d7f.png)
 
-Click the Plus sign to add a new terminal, using the arrow to specifically choose bash. 
+The Before Code (has error)
 
-It actually doesn't matter if you use powershell or bash at this point. Then, type "ssh cs15lwi23zz@ieng6.ucsd.edu" 
-except with your credentials to login. From there, it'll ask you for a password **and** it will not show your password as you 
-type or any indication you typed something. Just blindly type your resetted password and you should be able to login.
+```java
+  // Changes the input array to be in reversed order
+  static void reverseInPlace(int[] arr) {
+    for(int i = 0; i < arr.length; i += 1) {
+      arr[i] = arr[arr.length - i - 1];
+    }
+  }
 
-![image](https://user-images.githubusercontent.com/45048652/214347130-a91bc4ab-1409-472c-abc4-1b7d4acbd131.png)
+  // Returns a *new* array with all the elements of the input array in reversed
+  // order
+  static int[] reversed(int[] arr) {
+    int[] newArray = new int[arr.length];
+    for(int i = 0; i < arr.length; i += 1) {
+      arr[i] = newArray[arr.length - i - 1];
+    }
+    return arr;
+  }
+```
 
+The After Code (fixed)
+
+```java
+  // Changes the input array to be in reversed order
+  static void reverseInPlace(int[] arr) {
+    for(int i = 0; i < arr.length/2; i++ ) {
+      int temp = arr[i];
+      arr[i] = arr[arr.length - i -1];
+      arr[arr.length - i -1] = temp;
+    }
+  }
+
+  // Returns a *new* array with all the elements of the input array in reversed
+  // order
+  static int[] reversed(int[] arr) {
+    int[] newArray = new int[arr.length];
+    for(int i = 0; i < arr.length; i += 1) {
+      newArray[i] = arr[arr.length - i - 1];
+    }
+    return newArray;
+  }
+
+```
+A failure-inducing input for the buggy program, as a JUnit test and any associated code (write it as a code block in Markdown)
+
+An input that doesn’t induce a failure, as a JUnit test and any associated code (write it as a code block in Markdown)
+The symptom, as the output of running the tests (provide it as a screenshot of running JUnit with at least the two inputs above)
+The bug, as the before-and-after code change required to fix it (as two code blocks in Markdown)
  
 # Step 3 - Trying Some Commands (omg this is where pwd works)
 
