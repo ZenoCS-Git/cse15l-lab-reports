@@ -33,3 +33,22 @@ $ find -iname "Cuba-**.txt"
  ```
  
  ## Find -type
+
+The -type filters by type depending on the type. Use -type d for directory results or -type f for file results. 
+The syntax is usually comes after the specificed string, such as find "example" -type d
+
+Example 1 using -type d
+```
+
+```
+ 
+Example 2 using -type f
+
+```
+$ find -name "Bahamas*" -type f
+./travel_guides/berlitz2/Bahamas-History.txt
+./travel_guides/berlitz2/Bahamas-Intro.txt
+./travel_guides/berlitz2/Bahamas-WhatToDo.txt
+./travel_guides/berlitz2/Bahamas-WhereToGo.txt
+```
+
