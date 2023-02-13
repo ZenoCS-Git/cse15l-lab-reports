@@ -1,7 +1,7 @@
 # Lab Report 3, Research on Find Command (a report even tho we didn't have lab during skill demo)
 Okay, it's actually bad.
 
-This blog describes the research learned from this website (https://adamtheautomator.com/bash-find/#:~:text=The%20Bash%20find%20Command%20101,-Finding%20a%20file&text=The%20find%20command%20allows%20you,a%20folder%20on%20your%20computer.)
+This blog describes the research learned from this [website](https://adamtheautomator.com/bash-find/#:~:text=The%20Bash%20find%20Command%20101,-Finding%20a%20file&text=The%20find%20command%20allows%20you,a%20folder%20on%20your%20computer.)
 
 ## Find -name
 
@@ -19,7 +19,17 @@ For each of those options, give 2 examples of using it on files and directories 
 
  Example 1 using -name
  
+    $ find -name "Cuba-History.txt"
+    ./travel_guides/berlitz2/Cuba-History.txt
  
  
+Example 2 using -iname and * 
+
+```
+$ find -iname "Cuba-**.txt"
+./travel_guides/berlitz2/Cuba-History.txt
+./travel_guides/berlitz2/Cuba-WhatToDo.txt
+./travel_guides/berlitz2/Cuba-WhereToGo.txt
+ ```
  
-Example 2 using -iname and *
+ ## Find -type
