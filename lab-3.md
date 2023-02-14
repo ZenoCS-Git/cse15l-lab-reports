@@ -32,7 +32,7 @@ $ find -iname "Cuba-**.txt"
 ./travel_guides/berlitz2/Cuba-WhereToGo.txt
  ```
  
- ## Find -type
+## Find -type
 
 The -type filters by type depending on the type. Use -type d for directory results or -type f for file results. 
 The syntax is usually comes after the specificed string, such as find "example" -type d
@@ -58,7 +58,7 @@ $ find -name "Bahamas*" -type f
 
 Side note: The operator -and can also be used to combine -name and -type. 
 
- ## Find -or
+## Find -or
 
 Bash also uses Operators to perform actions such as combining filters or allowing two search conditions. With this, 
 you can find two things at once. 
@@ -77,13 +77,40 @@ $ find -name "Bahamas*" -or -name "*HongKong*"
 ./travel_guides/berlitz2/Bahamas-WhereToGo.txt
 ```
  
-Example 2 using -or with -type
-
+Example 2 using -or with -type d. This is useful if I wanted the files named Hawaii but also the directory of Berk but not all the 
+files in the Berk files at the same time.
 ```
-$ find -name "Bahamas*" -type f
-./travel_guides/berlitz2/Bahamas-History.txt
+$ find -name "*Hawaii*" -or -name "Berk" -type d
+./non-fiction/OUP/Berk
+./travel_guides/berlitz1/HandRHawaii.txt
+./travel_guides/berlitz1/HistoryHawaii.txt
+./travel_guides/berlitz1/WhatToHawaii.txt
+./travel_guides/berlitz1/WhereToHawaii.txt
+```
+
+## Find -not
+
+Bash also supports a -not which excludes certain files or directories you don't want.
+
+Example 1 using -not. This is helpful if you want all files and directories that doesn't contain 
+Bahamas* but usually is better for smaller datasets or combined with -and. 
+```
+$ find -not -name "Bahamas*"
+.
+./non-fiction
+./non-fiction/OUP
+./non-fiction/OUP/Abernathy
+./non-fiction/OUP/Abernathy/ch1.txt
+./non-fiction/OUP/Abernathy/ch14.txt
+./non-fiction/OUP/Abernathy/ch15.txt
+... 
+```
+ 
+Example 2 using -not with -and. This is useful if you want all files/directories named Bahamas* but none of the files with History string 
+in the name.
+```
+$ find -name "Bahamas*" -and -not -name "*History*"
 ./travel_guides/berlitz2/Bahamas-Intro.txt
 ./travel_guides/berlitz2/Bahamas-WhatToDo.txt
 ./travel_guides/berlitz2/Bahamas-WhereToGo.txt
 ```
-
