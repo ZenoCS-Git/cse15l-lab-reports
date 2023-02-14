@@ -103,7 +103,7 @@ $ find -not -name "Bahamas*"
 ./non-fiction/OUP/Abernathy/ch1.txt
 ./non-fiction/OUP/Abernathy/ch14.txt
 ./non-fiction/OUP/Abernathy/ch15.txt
-... 
+... (goes on for 30 more lines)
 ```
  
 Example 2 using -not with -and. This is useful if you want all files/directories named Bahamas* but none of the files with History string 
