@@ -17,13 +17,13 @@ You can also use i in -name to ignore case-sensitivity in the results (-iname).
 
 For each of those options, give 2 examples of using it on files and directories from ./written_2. Show each example as a code block that shows the command and its output, and write a sentence or two about what it’s doing and why it’s useful. 
 
- Example 1 using -name
+ Example 1 using -name. This is useful to find certain files or directories named a specific string.
  
     $ find -name "Cuba-History.txt"
     ./travel_guides/berlitz2/Cuba-History.txt
  
  
-Example 2 using -iname and * 
+Example 2 using -iname and *. This is useful to find files or directories with a specific string but you can't recall the case of each letter or the entire string.
 
 ```
 $ find -iname "Cuba-**.txt"
@@ -37,12 +37,47 @@ $ find -iname "Cuba-**.txt"
 The -type filters by type depending on the type. Use -type d for directory results or -type f for file results. 
 The syntax is usually comes after the specificed string, such as find "example" -type d
 
-Example 1 using -type d
-```
+Note: Use * in the string search in combination with -name unless you know exactly the string
 
+Example 1 using -type d. This is useful if you only want directories in your search results.
+```
+$ find -name "berlitz*" -type d
+./travel_guides/berlitz1
+./travel_guides/berlitz2
 ```
  
-Example 2 using -type f
+Example 2 using -type f. This is useful if you only want files in your search results.
+
+```
+$ find -name "Bahamas*" -type f
+./travel_guides/berlitz2/Bahamas-History.txt
+./travel_guides/berlitz2/Bahamas-Intro.txt
+./travel_guides/berlitz2/Bahamas-WhatToDo.txt
+./travel_guides/berlitz2/Bahamas-WhereToGo.txt
+```
+
+Side note: The operator -and can also be used to combine -name and -type. 
+
+ ## Find -or
+
+Bash also uses Operators to perform actions such as combining filters or allowing two search conditions. With this, 
+you can find two things at once. 
+
+Example 1 using -or. This is helpful if you need to find all files named either one string or another string.
+```
+$ find -name "Bahamas*" -or -name "*HongKong*"
+./travel_guides/berlitz1/HandRHongKong.txt
+./travel_guides/berlitz1/HistoryHongKong.txt
+./travel_guides/berlitz1/IntroHongKong.txt
+./travel_guides/berlitz1/WhatToHongKong.txt
+./travel_guides/berlitz1/WhereToHongKong.txt
+./travel_guides/berlitz2/Bahamas-History.txt
+./travel_guides/berlitz2/Bahamas-Intro.txt
+./travel_guides/berlitz2/Bahamas-WhatToDo.txt
+./travel_guides/berlitz2/Bahamas-WhereToGo.txt
+```
+ 
+Example 2 using -or with -type
 
 ```
 $ find -name "Bahamas*" -type f
