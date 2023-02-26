@@ -55,9 +55,9 @@ Use the same `javac` and `java` command form step 6 to run the tests and see tha
 
 `git add List<tab>.java<enter>` 
 
-`git commit -m "updated"`
+`git commit -m "updated"<enter>`
 
-`git push` 
+`git push<enter>` 
 
 Using `git add` we add the changes made to the java file, `git commit` with `-m  "updated"` to setup the commit with a message, and `git push` to save these changes to the repository on git. 
 
