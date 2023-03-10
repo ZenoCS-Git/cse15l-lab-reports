@@ -1,11 +1,8 @@
 # Lab Report 5, A blast from the past
 Okay, it's back to being bad.
 
-This entry deals with the steps of doing the tasks on Week 7's page after the timer started.
+This entry deals with Week 9's "For lab report 4 (about doing commands quickly), how could you have done the task very quickly by writing a bash script (even if that was against the rules)"
 
-## Step 4 - Log into ieng6
+## Speeding with Bash Script
 
-`<up><enter>` 
-  
-Using the history of the terminal, you can easily access your previous ssh command into the ieng6 server. `ssh cs15lwi23atx@ieng.ucsd.edu` is the command to login with the ieng6 part to specify the server. 
-
+You first, obviously, want to create a .sh file in the same working directory as the rest of the java and tester files. 
