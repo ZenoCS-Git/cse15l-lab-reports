@@ -43,4 +43,10 @@ git push
 
 Some things to note from this experience. When you run a bash script with a cd into a different directory, your current working directory does not change after the script finishes. Hence why you need to cd into lab7/ again in the second script. 
 
+## Zooooooom now!
 
+Now you ready to complete lab 4's task really quickly (if we ignore the nano editing part for fixing the error (or if you did the copy file method))! 
+
+Using the arrow keys, navigate up to your history of logging in, login, and then simply run `bash 1.sh` and then rush `bash 2.sh` and you are done! Remember, you can use tab to auto fill 1.sh and 2.sh after typing the first character!
+
+![image](https://user-images.githubusercontent.com/45048652/224462664-c0e493b3-306e-4ae6-bea9-3974e90b7704.png)
